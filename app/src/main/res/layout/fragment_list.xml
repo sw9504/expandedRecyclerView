@@ -8,8 +8,10 @@
     tools:context=".fragments.listFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:id="@+id/recInstrument"
+        android:layout_width="400dp"
+        android:clipToPadding="false"
+        android:layout_height="500dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"

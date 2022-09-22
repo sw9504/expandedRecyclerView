@@ -1,17 +1,17 @@
-package com.utn.expandedrecyclerview.adapter
-
+package com.utn.myrecyclerview.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.utn.expandedrecyclerview.R
 import com.utn.expandedrecyclerview.entities.Instrument
 
-class InstrumentAdapter (var instrumentList : MutableList<Instrument>) : RecyclerView.Adapter<InstrumentAdapter.InstrumentHolder>() {
+class InstrumentAdapter(var instrumentList : MutableList <Instrument>) : RecyclerView.Adapter<InstrumentAdapter.InstrumentHolder> (){
 
-    class InstrumentHolder (v : View) : RecyclerView.ViewHolder(v) {
-        private var view : View
+    class InstrumentHolder (v: View) : RecyclerView.ViewHolder(v) {
+        private var view: View
         init {
             this.view = v
         }
@@ -35,11 +35,10 @@ class InstrumentAdapter (var instrumentList : MutableList<Instrument>) : Recycle
     override fun onBindViewHolder(holder: InstrumentHolder, position: Int) {
         holder.setName(instrumentList[position].name)
         holder.setBrand(instrumentList[position].brand)
-
     }
 
     override fun getItemCount(): Int {
         return instrumentList.size
     }
-
 }
+
