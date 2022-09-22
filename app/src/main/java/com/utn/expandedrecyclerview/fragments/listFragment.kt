@@ -7,15 +7,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.utn.expandedrecyclerview.R
+import com.utn.expandedrecyclerview.entities.Instrument
 
 class listFragment : Fragment() {
     lateinit var v : View
+
+    var instrumentList : MutableList<Instrument> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         v =  inflater.inflate(R.layout.fragment_list, container, false)
+
+        instrumentList.add(Instrument("0","Guitarra","Gibson","null"))
+        instrumentList.add(Instrument("1","Guitarra","Fender","null"))
+        instrumentList.add(Instrument("2","Guitarra","Ibanez","null"))
+        instrumentList.add(Instrument("3","Piano","Cassio","null"))
+
         return v
+    }
+
+    override fun onStart() {
+        super.onStart()
     }
 }
