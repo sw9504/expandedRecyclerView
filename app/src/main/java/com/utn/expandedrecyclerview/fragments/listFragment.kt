@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.utn.expandedrecyclerview.R
@@ -30,6 +32,10 @@ class listFragment : Fragment() {
         instrumentList.add(Instrument("1","Guitarra","Fender","null","null"))
         instrumentList.add(Instrument("2","Guitarra","Ibanez","null","null"))
         instrumentList.add(Instrument("3","Piano","Cassio","null","null"))
+        instrumentList.add(Instrument("0","Guitarra","Gibson","null","null"))
+        instrumentList.add(Instrument("1","Guitarra","Fender","null","null"))
+        instrumentList.add(Instrument("2","Guitarra","Ibanez","null","null"))
+        instrumentList.add(Instrument("3","Piano","Cassio","null","null"))
 
         return v
     }
@@ -37,7 +43,10 @@ class listFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        adapter = InstrumentAdapter(instrumentList)
+        adapter = InstrumentAdapter(instrumentList){ position ->
+            var action = listFragmentDirections.actionListFragmentToExpandedFragment(position)
+            v.findNavController().navigate(action)
+        }
         recInstrument.layoutManager = LinearLayoutManager(requireContext())
         recInstrument.adapter = adapter
     }

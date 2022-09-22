@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.utn.expandedrecyclerview.R
 import com.utn.expandedrecyclerview.entities.Instrument
 
-class InstrumentAdapter(var instrumentList : MutableList <Instrument>) : RecyclerView.Adapter<InstrumentAdapter.InstrumentHolder> (){
+class InstrumentAdapter(private var instrumentList : MutableList <Instrument>,
+                        private var onClick : (Int) -> Unit) : RecyclerView.Adapter<InstrumentAdapter.InstrumentHolder> (){
 
     class InstrumentHolder (v: View) : RecyclerView.ViewHolder(v) {
         private var view: View
@@ -16,15 +17,20 @@ class InstrumentAdapter(var instrumentList : MutableList <Instrument>) : Recycle
             this.view = v
         }
 
-        fun setName (name : String){
+        fun setName (name : String) {
             var txtName : TextView = view.findViewById(R.id.txtName)
             txtName.text = name
         }
 
-        fun setBrand (brand : String){
+        fun setBrand (brand : String) {
             var txtBrand : TextView = view.findViewById(R.id.txtBrand)
             txtBrand.text = brand
         }
+
+        fun getCard () : CardView {
+            return view.findViewById(R.id.cardInstrument)
+        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InstrumentHolder {
@@ -35,6 +41,10 @@ class InstrumentAdapter(var instrumentList : MutableList <Instrument>) : Recycle
     override fun onBindViewHolder(holder: InstrumentHolder, position: Int) {
         holder.setName(instrumentList[position].name)
         holder.setBrand(instrumentList[position].brand)
+
+        holder.getCard().setOnClickListener {
+            onClick(position)
+        }
     }
 
     override fun getItemCount(): Int {
