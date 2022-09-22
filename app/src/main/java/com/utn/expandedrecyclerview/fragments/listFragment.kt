@@ -44,10 +44,11 @@ class listFragment : Fragment() {
         super.onStart()
 
         adapter = InstrumentAdapter(instrumentList){ position ->
-            var action = listFragmentDirections.actionListFragmentToExpandedFragment(position)
+            var action = listFragmentDirections.actionListFragmentToExpandedFragment(instrumentList[position])
             v.findNavController().navigate(action)
         }
         recInstrument.layoutManager = LinearLayoutManager(requireContext())
         recInstrument.adapter = adapter
     }
+
 }

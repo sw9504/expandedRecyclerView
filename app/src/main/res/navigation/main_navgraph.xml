@@ -11,8 +11,8 @@
         android:label="fragment_expanded"
         tools:layout="@layout/fragment_expanded" >
         <argument
-            android:name="position"
-            app:argType="integer" />
+            android:name="instrumentObj"
+            app:argType="com.utn.expandedrecyclerview.entities.Instrument" />
     </fragment>
     <fragment
         android:id="@+id/listFragment"

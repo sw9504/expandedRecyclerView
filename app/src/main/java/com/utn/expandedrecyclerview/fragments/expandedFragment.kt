@@ -1,12 +1,11 @@
 package com.utn.expandedrecyclerview.fragments
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import com.utn.expandedrecyclerview.R
 
 class expandedFragment : Fragment() {
@@ -33,20 +32,15 @@ class expandedFragment : Fragment() {
         return v
     }
 
-
-
     override fun onStart() {
         super.onStart()
-        var position = expandedFragmentArgs.fromBundle(requireArguments()).position
+        var instrumentList = expandedFragmentArgs.fromBundle(requireArguments()).instrumentObj
 
-        /**
-         ** Falta pasarle la lista por argumento
-        txtId.text = instrumentList[position].id
-        txtName.text = instrumentList[position].name
-        txtBrand.text = instrumentList[position].brand
-        txtDesc.text = instrumentList[position].desc
-        txtImg.text = instrumentList[position].img
+        txtId.text = instrumentList.id
+        txtName.text = instrumentList.name
+        txtBrand.text = instrumentList.brand
+        txtDesc.text = instrumentList.desc
+        txtImg.text = instrumentList.img
 
-         */
     }
 }
