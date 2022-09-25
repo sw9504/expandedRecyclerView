@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.utn.expandedrecyclerview.R
 
 class expandedFragment : Fragment() {
@@ -16,6 +18,7 @@ class expandedFragment : Fragment() {
     lateinit var txtBrand : TextView
     lateinit var txtDesc : TextView
     lateinit var txtImg : TextView
+    lateinit var imgAvatar: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +31,7 @@ class expandedFragment : Fragment() {
         txtBrand = v.findViewById(R.id.txtBr)
         txtDesc = v.findViewById(R.id.txtDesc)
         txtImg = v.findViewById(R.id.txtUrl)
+        imgAvatar = v.findViewById(R.id.imgAvatar)
 
         return v
     }
@@ -40,7 +44,11 @@ class expandedFragment : Fragment() {
         txtName.text = instrumentList.name
         txtBrand.text = instrumentList.brand
         txtDesc.text = instrumentList.desc
-        txtImg.text = instrumentList.img
+        txtImg.text = instrumentList.url
+
+        Glide.with(requireContext())
+            .load(instrumentList.url)
+            .into(imgAvatar)
 
     }
 }
