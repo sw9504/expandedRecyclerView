@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.utn.expandedrecyclerview.R
 
@@ -49,6 +50,11 @@ class expandedFragment : Fragment() {
         Glide.with(requireContext())
             .load(instrumentList.url)
             .into(imgAvatar)
+
+        imgAvatar.setOnClickListener {
+            var action = expandedFragmentDirections.actionExpandedFragmentToFullImgFragment(instrumentList.url)
+            v.findNavController().navigate(action)
+        }
 
     }
 }

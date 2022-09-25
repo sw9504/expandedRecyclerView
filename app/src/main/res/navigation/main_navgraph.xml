@@ -13,6 +13,9 @@
         <argument
             android:name="instrumentObj"
             app:argType="com.utn.expandedrecyclerview.entities.Instrument" />
+        <action
+            android:id="@+id/action_expandedFragment_to_fullImgFragment"
+            app:destination="@id/fullImgFragment" />
     </fragment>
     <fragment
         android:id="@+id/listFragment"
@@ -22,5 +25,14 @@
         <action
             android:id="@+id/action_listFragment_to_expandedFragment"
             app:destination="@id/expandedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fullImgFragment"
+        android:name="com.utn.expandedrecyclerview.fragments.fullImgFragment"
+        android:label="fragment_full_img"
+        tools:layout="@layout/fragment_full_img" >
+        <argument
+            android:name="urlArg"
+            app:argType="string" />
     </fragment>
 </navigation>
